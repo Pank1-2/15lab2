@@ -18,19 +18,18 @@ class Handler implements URLHandler {
     String x = "";
 
     public String handleRequest(URI url) {
-        // if (url.getPath().equals("/")) {
-        //     return String.format("String: %d", x);
-        // } 
-        // else {
-        //     System.out.println("Path: " + url.getPath());
-        if (url.getPath().contains("/add")) {
+        if (url.getPath().equals("/")) {
+            return x;
+        } 
+        else if (url.getPath().contains("/add")) {
             String[] parameters = url.getQuery().split("=");
-            if (parameters[0].contains("=")) {
+            if (parameters[0].equals("s")) {
                 x += parameters[1] + '\n';
-                return String.format(x);
+                return x;
             }
         }
-        return "404 Not Found!";
+        return "String Not Found!";
         
     }
 }
+
